@@ -1,0 +1,35 @@
+body {
+  color: #16181d;
+  background-color: #f9f8fc;
+  font-family: "Roboto", sans-serif;
+  margin: 1rem auto;
+  width: fit-content;
+  max-width: 1000px;
+  display: grid;
+  grid-template-columns: 50px 1fr 50px;
+  row-gap: 1rem;
+}
+body > div {
+  grid-column: 2;
+}
+body .new-sentence {
+  display: grid;
+  row-gap: 1rem;
+  grid-template-columns: auto;
+}
+body .new-sentence input[type=text] {
+  width: 40rem;
+}
+body .new-sentence mark {
+  background-color: #c3f2de;
+  color: #16181d;
+  padding: 0.1em 0.2em;
+}
+body .new-sentence button {
+  width: fit-content;
+  font: "Roboto", sans-serif;
+  color: #f9f8fc;
+  background-color: #602fa2;
+  border: none;
+  padding: 0.5em 1em;
+}

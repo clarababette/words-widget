@@ -1,0 +1,49 @@
+$white: #f9f8fc;
+$mint: #c3f2de;
+$black: #16181d;
+$purple: #602fa2;
+$orange: #f88a00;
+$green: #33f297;
+$font-stack: 'Roboto', sans-serif;
+
+body {
+  color: $black;
+  background-color: $white;
+  font-family: $font-stack;
+  margin: 1rem auto;
+  width: fit-content;
+  max-width: 1000px;
+  display: grid;
+  grid-template-columns: 50px 1fr 50px;
+  row-gap: 1rem;
+
+  & > div {
+    grid-column: 2;
+  }
+
+  .new-sentence {
+    display: grid;
+    row-gap: 1rem;
+    grid-template-columns: auto;
+    input[type="text"] {
+      width: 40rem
+    }
+    mark {
+      background-color: $mint;
+      color: $black;
+      padding: 0.1em 0.2em;
+    }
+    
+    button {
+      width: fit-content;
+      font: $font-stack;
+      color: $white;
+      background-color: $purple;
+      border: none;
+      padding: 0.5em 1em;
+    }
+  }
+}
+
+
+
