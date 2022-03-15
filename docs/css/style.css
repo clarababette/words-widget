@@ -25,6 +25,9 @@ body .new-sentence mark {
   color: #16181d;
   padding: 0.1em 0.2em;
 }
+body .new-sentence mark.longest {
+  background-color: #33f297;
+}
 body .new-sentence button {
   width: fit-content;
   font: "Roboto", sans-serif;
@@ -32,4 +35,7 @@ body .new-sentence button {
   background-color: #602fa2;
   border: none;
   padding: 0.5em 1em;
+}
+body .hidden {
+  visibility: hidden;
 }

@@ -34,6 +34,11 @@ body {
       padding: 0.1em 0.2em;
     }
     
+    mark.longest {
+        background-color: $green;
+      }
+
+    
     button {
       width: fit-content;
       font: $font-stack;
@@ -42,6 +47,9 @@ body {
       border: none;
       padding: 0.5em 1em;
     }
+  }
+  .hidden {
+    visibility: hidden;
   }
 }
 
