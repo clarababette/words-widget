@@ -6,20 +6,18 @@ document.addEventListener('DOMContentLoaded', () => {
     '.input-sentence',
     '.analyse-btn',
     '.output-sentence',
-    '.word-count',
     '#hide-words',
     '.new-sentence',
   ];
 
   const elements = selectors.map((selector) =>
-    document.querySelector(selector),
+    document.querySelector(selector)
   );
 
   const [
     inputSentence,
     analyseBtn,
     outputSentence,
-    wordCount,
     hideWords,
     newSentence,
   ] = elements;
@@ -30,13 +28,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const sentencTemplate = document.querySelector('#sentence-template').innerHTML;
   const templateScript = Handlebars.compile(sentencTemplate);
 
-  analyseBtn.addEventListener('click', () => {
+  const sentenceDetails = async () => {
     let sentence = inputSentence.value;
     newSentence.innerHTML += templateScript(sentences.analyse(sentence));
-  });
-
-  hideWords.addEventListener('click', () => {
-    let words = outputSentence.children;
+  }
+  analyseBtn.addEventListener('click', async () => {
+    await sentenceDetails();
+      document.querySelector('#hide-words').addEventListener('click', () => {
+    let words = document.querySelector('.output-sentence').children;
     for (let i = 0; i < words.length; i++) {
       let word = words[i].innerHTML;
       if (word.length < 5) {
@@ -44,4 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
   });
+  });
+
+
 });
