@@ -5,9 +5,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const selectors = [
     '.input-sentence',
     '.analyse-btn',
-    '.output-sentence',
-    '#hide-words',
     '.new-sentence',
+    '.sentence-bank',
+    '.new-sentence .sentence-details'
   ];
 
   const elements = selectors.map((selector) =>
@@ -17,33 +17,54 @@ document.addEventListener('DOMContentLoaded', () => {
   const [
     inputSentence,
     analyseBtn,
-    outputSentence,
-    hideWords,
     newSentence,
+    sentenceBank,
+    newDetails
   ] = elements;
 
   Handlebars.registerHelper('included', (list, word) => {
     return list.includes(word.replace(/\W+/g, ''));
 });
-  const sentencTemplate = document.querySelector('#sentence-template').innerHTML;
-  const templateScript = Handlebars.compile(sentencTemplate);
+  const detailsTemplate = document.querySelector('#sentence-details-template').innerHTML;
+  const detailsScript = Handlebars.compile(detailsTemplate);
 
-  const sentenceDetails = async () => {
-    let sentence = inputSentence.value;
-    newSentence.innerHTML += templateScript(sentences.analyse(sentence));
-  }
-  analyseBtn.addEventListener('click', async () => {
-    await sentenceDetails();
-      document.querySelector('#hide-words').addEventListener('click', () => {
-    let words = document.querySelector('.output-sentence').children;
+  const sentenceTemplate = document.querySelector('#sentence-template').innerHTML;
+  const sentenceScript = Handlebars.compile(sentenceTemplate);
+  
+  // sentences.allSentences.forEach(sentence => {
+  //   sentenceBank.innerHTML += sentenceScript({words: sentence})
+  // })
+  
+  const hideWords = () => {
+  let words = document.querySelector('.output-sentence').children;
     for (let i = 0; i < words.length; i++) {
       let word = words[i].innerHTML;
       if (word.length < 5) {
         words[i].classList.toggle('hidden');
       }
     }
-  });
-  });
+}
 
+  const addToBank = () => {
+    sentenceBank.innerHTML = '';
+    sentences.allSentences.forEach(sentence => {
+      sentenceBank.innerHTML += sentenceScript({ words: sentence })
+        })
+  }
+  const analyseSentence = () => {
+    let sentence = inputSentence.value;
+    newDetails.innerHTML = detailsScript(sentences.analyse(sentence))
+  }
+
+  newSentence.addEventListener("click", (event) => {
+    const target = event.target;
+    if (target.classList.contains("analyse-btn")) {
+      analyseSentence();
+      addToBank();
+    }
+    if (target.id == "hide-words") {
+      hideWords()
+    }
+  })
 
 });

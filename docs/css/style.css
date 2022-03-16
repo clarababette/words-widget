@@ -31,7 +31,7 @@ body .new-sentence .input-sentence:focus {
 body .new-sentence .output-sentence {
   position: relative;
 }
-body .new-sentence .above::before {
+body .new-sentence .aboveAvg::before {
   position: absolute;
   content: "";
   top: -0.25rem;
@@ -41,7 +41,7 @@ body .new-sentence .above::before {
   background-color: #33f297;
   border-radius: 0.75rem;
 }
-body .new-sentence .below::before {
+body .new-sentence .belowAvg::before {
   position: absolute;
   content: "";
   top: -0.25rem;

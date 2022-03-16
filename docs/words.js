@@ -20,12 +20,13 @@ export class Analyse {
     return this._words.filter(word => word.replace(/\W+/g, '').length > 4)
   }
   get average() {
+    console.log(this._sentences.reduce((sum, sentence) => sum + sentence.length, 0) / this._sentences.length)
     return this._sentences.reduce((sum, sentence) => sum + sentence.length, 0) / this._sentences.length;
   }
   analyse(sentence) {
     if (sentence !== '') {
       this._words = sentence.trim().split(/\s+/);
-      this._sentences = [this._words, ...this._sentences.slice(0,4)]
+      this._sentences = this._sentences.length == 5 ? [this._words, ...this._sentences.slice(0, 4)] : [this._words, ...this._sentences]
       return {
         words: this._words,
         longestWords: this.longestWords,
@@ -34,5 +35,8 @@ export class Analyse {
         avg: this._words.length >= this.average ? 'aboveAvg' : 'belowAvg'
       }
     }
+  }
+  get allSentences() {
+    return this._sentences;
   }
 }

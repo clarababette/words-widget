@@ -41,7 +41,7 @@ body {
       position: relative;
     }
 
-    .above::before {
+    .aboveAvg::before {
       position: absolute;
       content: '';
       top: -0.25rem;
@@ -51,7 +51,7 @@ body {
       background-color: $green;
       border-radius: 0.75rem;
     }
-    .below::before {
+    .belowAvg::before {
       position: absolute;
       content: '';
       top: -0.25rem;
