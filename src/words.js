@@ -26,12 +26,13 @@ export class Analyse {
     if (sentence !== '') {
       this._words = sentence.trim().split(/\s+/);
       this._sentences = [this._words, ...this._sentences.slice(0,4)]
-      return [
-        this.longestWords,
-        this.moreThanFourChar,
-        this._words.length,
-        this._words.length >= this.average ? 'aboveAvg' : 'belowAvg' 
-      ]
+      return {
+        words: this._words,
+        longestWords: this.longestWords,
+        moreThanFourChar: this.moreThanFourChar,
+        wordCount: this._words.length,
+        avg: this._words.length >= this.average ? 'aboveAvg' : 'belowAvg'
+      }
     }
   }
 }

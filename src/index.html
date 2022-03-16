@@ -23,16 +23,38 @@
         placeholder="Enter a sentence."
       />
       <button class="analyse-btn">Analyse</button>
-      <div>
+      <!-- <div>
         <input type="checkbox" id="hide-words" />
         <label for="hide-words"
           >Hide all words fewer than five characters long.</label
         >
       </div>
       <div class="output-sentence"></div>
-      <div class="word-count"></div>
+      <div class="word-count"></div> -->
     </div>
   </body>
+
+  <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+  <script id="sentence-template" type="text/x-handlebars-template">
+    <input type="checkbox" id="hide-words" />
+        <label for="hide-words">Hide all words fewer than five characters long.</label>
+      </div>
+      <div class="output-sentence">
+        {{#each words}}
+        {{#if (included ../longestWords this)}}
+        <mark class="longest">{{this}}</mark>
+        {{else}}
+        {{#if (included ../moreThanFourChar this)}}
+        <mark>{{this}}</mark>
+        {{else}}
+        <span>{{this}}</span>
+        {{/if}}
+        {{/if}}
+        {{/each}}
+      </div>
+      <div class="word-count">Word count: {{wordCount}}</div>
+  </script>
+
   <script type="module" src="words.js"></script>
   <script type="module" src="index.js"></script>
 </html>
