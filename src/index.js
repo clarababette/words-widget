@@ -1,4 +1,8 @@
+import { Analyse } from "./words.js";
 document.addEventListener('DOMContentLoaded', () => {
+
+  const sentences = new Analyse;
+
   const selectors = [
     '.input-sentence',
     '.analyse-btn',
@@ -16,6 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   analyseBtn.addEventListener('click', () => {
     let sentence = inputSentence.value;
+    console.log(sentences.analyse(sentence));
     if (sentence !== '') {
       sentence = sentence.trim();
       const words = sentence.split(/\s+/);

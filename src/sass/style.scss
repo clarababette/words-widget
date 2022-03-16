@@ -26,8 +26,42 @@ body {
     row-gap: 1rem;
     grid-template-columns: auto;
     input[type="text"] {
-      width: 40rem
+      width: 40rem;
+      padding: 0.5em;
+      font-size: 1.2rem;
+      border: none;
+      background-color: lighten($color: $purple, $amount: 50%);
     }
+
+    .input-sentence:focus {
+      border: none;
+      outline: none;
+    }
+    .output-sentence {
+      position: relative;
+    }
+
+    .above::before {
+      position: absolute;
+      content: '';
+      top: -0.25rem;
+      left: -2rem;
+      width: 1.5rem;
+      height: 1.5rem;
+      background-color: $green;
+      border-radius: 0.75rem;
+    }
+    .below::before {
+      position: absolute;
+      content: '';
+      top: -0.25rem;
+      left: -2rem;
+      width: 1.5rem;
+      height: 1.5rem;
+      background-color: $orange;
+      border-radius: 0.75rem;
+    }
+
     mark {
       background-color: $mint;
       color: $black;
@@ -37,7 +71,6 @@ body {
     mark.longest {
         background-color: $green;
       }
-
     
     button {
       width: fit-content;

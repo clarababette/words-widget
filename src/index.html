@@ -16,7 +16,12 @@
   <body>
     <div>Words Widget</div>
     <div class="new-sentence">
-      <input type="text" class="input-sentence" />
+      <input
+        type="text"
+        class="input-sentence"
+        autofocus
+        placeholder="Enter a sentence."
+      />
       <button class="analyse-btn">Analyse</button>
       <div>
         <input type="checkbox" id="hide-words" />
@@ -28,5 +33,6 @@
       <div class="word-count"></div>
     </div>
   </body>
-  <script src="index.js"></script>
+  <script type="module" src="words.js"></script>
+  <script type="module" src="index.js"></script>
 </html>

@@ -19,6 +19,37 @@ body .new-sentence {
 }
 body .new-sentence input[type=text] {
   width: 40rem;
+  padding: 0.5em;
+  font-size: 1.2rem;
+  border: none;
+  background-color: #e6dbf5;
+}
+body .new-sentence .input-sentence:focus {
+  border: none;
+  outline: none;
+}
+body .new-sentence .output-sentence {
+  position: relative;
+}
+body .new-sentence .above::before {
+  position: absolute;
+  content: "";
+  top: -0.25rem;
+  left: -2rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: #33f297;
+  border-radius: 0.75rem;
+}
+body .new-sentence .below::before {
+  position: absolute;
+  content: "";
+  top: -0.25rem;
+  left: -2rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: #f88a00;
+  border-radius: 0.75rem;
 }
 body .new-sentence mark {
   background-color: #c3f2de;
