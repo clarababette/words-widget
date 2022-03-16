@@ -70,3 +70,9 @@ body .new-sentence button {
 body .hidden {
   visibility: hidden;
 }
+body .sentence {
+  cursor: pointer;
+}
+body .sentence:hover {
+  color: #602fa2;
+}

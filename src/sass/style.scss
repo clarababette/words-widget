@@ -84,6 +84,13 @@ body {
   .hidden {
     visibility: hidden;
   }
+
+  .sentence {
+    cursor: pointer;
+  }
+  .sentence:hover {
+    color: #602fa2;
+  }
 }
 
 

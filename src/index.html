@@ -19,17 +19,32 @@
       <input
         type="text"
         class="input-sentence"
+        id="input-sentence"
         autofocus
         placeholder="Enter a sentence."
       />
+
+      <div class="slidecontainer">
+        <div class=""></div>
+        <input
+          type="range"
+          min="0"
+          max="20"
+          value="20"
+          class="slider"
+          id="wordLimit"
+        />
+      </div>
       <button class="analyse-btn">Analyse</button>
       <div class="sentence-details"></div>
     </div>
+    <div>Sentence Bank</div>
     <div class="sentence-bank"></div>
   </body>
 
   <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
   <script id="sentence-details-template" type="text/x-handlebars-template">
+
     <input type="checkbox" id="hide-words" />
         <label for="hide-words">Hide all words fewer than five characters long.</label>
       </div>
@@ -49,11 +64,17 @@
       <div class="word-count">Word count: {{wordCount}}</div>
   </script>
   <script id="sentence-template" type="text/x-handlebars-template">
-    <div class='sentence'>
-      {{#each words}}
-        <span>{{this}}</span>
-      {{/each}}
-    </div>
+    {{#each sentences}}
+      <div>
+        <div class='sentence'>
+          {{#each words}}
+            <span>{{this}}</span>
+          {{/each}}
+        </div>
+        <button id='{{@index}}'>Details</button>
+      </div>
+
+    {{/each}}
   </script>
 
   <script type="module" src="words.js"></script>
