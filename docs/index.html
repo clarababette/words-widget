@@ -24,17 +24,6 @@
         placeholder="Enter a sentence."
       />
 
-      <div class="slidecontainer">
-        <div class=""></div>
-        <input
-          type="range"
-          min="0"
-          max="20"
-          value="20"
-          class="slider"
-          id="wordLimit"
-        />
-      </div>
       <button class="analyse-btn">Analyse</button>
       <div class="sentence-details"></div>
     </div>
@@ -43,18 +32,30 @@
   </body>
 
   <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
-  <script id="sentence-details-template" type="text/x-handlebars-template">
 
+  <script id="sentence-details-template" type="text/x-handlebars-template">
+    <div class="slidecontainer">
+         <div class="hideLength">Word limit: 5 characters</div>
+        <input
+          type="range"
+          min="0"
+          max="45"
+          value="5"
+          class="slider"
+          id="hideLength"
+        />
+
+      </div>
     <input type="checkbox" id="hide-words" />
-        <label for="hide-words">Hide all words fewer than five characters long.</label>
+        <label for="hide-words">Hide all words fewer than 5 characters long.</label>
       </div>
       <div class="output-sentence {{avg}}">
         {{#each words}}
         {{#if (included ../longestWords this)}}
-        <mark class="longest">{{this}}</mark>
+        <span class="longest">{{this}}</span>
         {{else}}
         {{#if (included ../moreThanFourChar this)}}
-        <mark>{{this}}</mark>
+        <span class="highlight">{{this}}</span>
         {{else}}
         <span>{{this}}</span>
         {{/if}}
@@ -63,16 +64,14 @@
       </div>
       <div class="word-count">Word count: {{wordCount}}</div>
   </script>
+
   <script id="sentence-template" type="text/x-handlebars-template">
     {{#each sentences}}
-      <div>
-        <div class='sentence'>
-          {{#each words}}
-            <span>{{this}}</span>
-          {{/each}}
-        </div>
-        <button id='{{@index}}'>Details</button>
-      </div>
+      <button id='{{@index}}' class='analyse-btn'>
+        {{#each words}}
+          <span>{{this}}</span>
+        {{/each}}
+      </button>
 
     {{/each}}
   </script>

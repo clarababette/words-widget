@@ -1,5 +1,5 @@
 $white: #f9f8fc;
-$mint: #c3f2de;
+$mint: #fecf00;
 $black: #16181d;
 $purple: #602fa2;
 $orange: #f88a00;
@@ -37,7 +37,26 @@ body {
       border: none;
       outline: none;
     }
-    .output-sentence {
+  }
+   button {
+      width: fit-content;
+      font: $font-stack;
+      color: $white;
+      background-color: $purple;
+      border: none;
+      padding: 0.5em 1em;
+    }
+  .hidden {
+    visibility: hidden;
+  }
+
+  .sentence {
+    cursor: pointer;
+  }
+  .sentence:hover {
+    color: #602fa2;
+  }
+  .output-sentence {
       position: relative;
     }
 
@@ -62,35 +81,40 @@ body {
       border-radius: 0.75rem;
     }
 
-    mark {
+    span.highlight {
       background-color: $mint;
       color: $black;
       padding: 0.1em 0.2em;
     }
     
-    mark.longest {
+    span.longest {
         background-color: $green;
       }
-    
-    button {
-      width: fit-content;
-      font: $font-stack;
-      color: $white;
-      background-color: $purple;
-      border: none;
-      padding: 0.5em 1em;
-    }
-  }
-  .hidden {
-    visibility: hidden;
-  }
 
-  .sentence {
-    cursor: pointer;
-  }
-  .sentence:hover {
-    color: #602fa2;
-  }
+    .sentence-details {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      row-gap: 1em;
+      div {
+        grid-column: span 2;
+      } 
+      background-color: lighten($color: $purple, $amount: 50%);
+    }
+
+    .sentence-bank {
+      display: grid;
+      grid-template-columns: 1fr;
+      row-gap: 1em;
+
+      & > div {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        
+      }
+    }
+    span {
+      pointer-events: none;
+    }
 }
 
 
