@@ -21,7 +21,6 @@ export class Analyse {
     return this._words.filter((word) => word.replace(/\W+/g, '').length > 4);
   }
   get average() {
-    console.log(this._sentences)
     return (
       this._sentences.reduce(
         (sum, sentence) => sum + sentence.words.length,
@@ -54,7 +53,7 @@ export class Analyse {
     return this._rawInput;
   }
   updateList() {
-    if (!this._sentences.includes(this._words)) {
+    if (!this._sentences.some(e => e.words.toString() == this._words.toString())) {
       this._sentences =
         this._sentences.length == 5
         ? [{ words: this._words }, ...this._sentences.slice(0, 4)]

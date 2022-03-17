@@ -35,14 +35,27 @@ document.addEventListener('DOMContentLoaded', () => {
     const hide = sentences.wordsShorter(
       document.querySelector('#hideLength').value
     );
-    console.log(document.querySelector('#hideLength').value)
-    console.log(hide)
     for (let i = 0; i < words.length; i++) {
       let word = words[i].innerHTML;
       if (hide.includes(word) && !words[i].classList.contains('hidden')) {
         words[i].classList.add('hidden');
       } else if (!hide.includes(word) && words[i].classList.contains('hidden')) {
         words[i].classList.remove('hidden');
+      }
+    }
+  };
+
+  const highlightWords = () => {
+    let words = document.querySelector('.output-sentence').children;
+    const dontHighlight = sentences.wordsShorter(
+      document.querySelector('#hideLength').value
+    );
+    for (let i = 0; i < words.length; i++) {
+      let word = words[i].innerHTML;
+      if (!dontHighlight.includes(word) && !words[i].classList.contains('highlight')) {
+        words[i].classList.add('highlight');
+      } else if (dontHighlight.includes(word) && words[i].classList.contains('highlight')) {
+        words[i].classList.remove('highlight');
       }
     }
   };
@@ -65,7 +78,6 @@ document.addEventListener('DOMContentLoaded', () => {
       target.classList.contains('analyse-btn') &&
       inputSentence.value !== ''
     ) {
-      console.log(inputSentence.value);
       analyseSentence();
     }
     if (target.id == 'hide-words') {
@@ -97,6 +109,9 @@ document.addEventListener('DOMContentLoaded', () => {
   newSentence.addEventListener('change', (event) => {
     if (event.target.id == 'hideLength') {
       const length = event.target.value;
+      if (length == 0) {
+        newDetails.innerHTML = '';
+      } else {
       document.querySelector(
         '.hideLength',
       ).innerHTML = `Word limit: ${length} characters`;
@@ -106,6 +121,8 @@ document.addEventListener('DOMContentLoaded', () => {
       ).innerHTML = `Hide all words fewer than ${length} characters long.`;
       if (document.querySelector('#hide-words').checked) {
         hideWords()
+      }
+      highlightWords()
       }
     }
   });

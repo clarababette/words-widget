@@ -52,7 +52,7 @@
       <div class="output-sentence {{avg}}">
         {{#each words}}
         {{#if (included ../longestWords this)}}
-        <span class="longest">{{this}}</span>
+        <span class="highlight longest">{{this}}</span>
         {{else}}
         {{#if (included ../moreThanFourChar this)}}
         <span class="highlight">{{this}}</span>

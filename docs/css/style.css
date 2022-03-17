@@ -73,7 +73,7 @@ body span.highlight {
   color: #16181d;
   padding: 0.1em 0.2em;
 }
-body span.longest {
+body span.highlight.longest {
   background-color: #33f297;
 }
 body .sentence-details {
