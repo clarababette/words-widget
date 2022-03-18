@@ -30,7 +30,7 @@ body .new-sentence .input-sentence:focus {
 }
 body button {
   width: fit-content;
-  font: "Roboto", sans-serif;
+  font-family: "Roboto", sans-serif;
   color: #f9f8fc;
   background-color: #602fa2;
   border: none;
@@ -77,7 +77,6 @@ body span.longest {
 body .sentence-details {
   display: grid;
   grid-template-columns: auto 1fr;
-  padding: 1em;
   row-gap: 1em;
   background-color: #e6dbf5;
 }

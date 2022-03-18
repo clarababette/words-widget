@@ -40,7 +40,7 @@ body {
   }
   button {
     width: fit-content;
-    font: $font-stack;
+    font-family: $font-stack;
     color: $white;
     background-color: $purple;
     border: none;
@@ -92,7 +92,6 @@ body {
   .sentence-details {
     display: grid;
     grid-template-columns: auto 1fr;
-    padding: 1em;
     row-gap: 1em;
     div {
       grid-column: span 2;

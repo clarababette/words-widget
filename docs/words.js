@@ -18,7 +18,7 @@ export class Analyse {
     return longestWords;
   }
   get moreThanFourChar() {
-    return this._words.filter((word) => word.replace(/\W+/g, '').length > 4);
+    return this._words.map(word => word.replace(/\W+/g, '')).filter((word) => word.length > 4);
   }
   get average() {
     const avg = (
@@ -67,6 +67,6 @@ export class Analyse {
     }
   }
   wordsShorter(length) {
-    return this._words.filter((word) => word.replace(/\W+/g, '').length < length);
+       return this._words.map(word => word.replace(/\W+/g, '')).filter((word) => word.length < length);
   }
 }

@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     elements;
 
   Handlebars.registerHelper('included', (list, word) => {
-    return list.includes(word);
+    return list.includes(word.replace(/\W+/g, ''));
   });
   const detailsTemplate = document.querySelector(
     '#sentence-details-template',
