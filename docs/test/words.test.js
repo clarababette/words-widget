@@ -1,4 +1,4 @@
-import {Analyse} from '../../src/words.js';
+import {Analyse} from '../words.js';
 describe('The Analyse class', function () {
   it("should return the word count for a given sentence.", () => {
     const test = new Analyse();
