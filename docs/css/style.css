@@ -4,7 +4,7 @@ body {
   font-family: "Roboto", sans-serif;
   margin: 1rem auto;
   width: fit-content;
-  max-width: 1000px;
+  max-width: 1200px;
   display: grid;
   grid-template-columns: 50px 1fr 50px;
   row-gap: 1rem;
@@ -18,7 +18,7 @@ body .new-sentence {
   grid-template-columns: auto;
 }
 body .new-sentence input[type=text] {
-  width: 40rem;
+  width: 50rem;
   padding: 0.5em;
   font-size: 1.2rem;
   border: none;
@@ -42,43 +42,42 @@ body .hidden {
 body .sentence {
   cursor: pointer;
 }
-body .sentence:hover {
-  color: #602fa2;
-}
 body .output-sentence {
   position: relative;
+  padding-left: 1.5em;
 }
 body .aboveAvg::before {
   position: absolute;
   content: "";
-  top: -0.25rem;
-  left: -2rem;
-  width: 1.5rem;
-  height: 1.5rem;
+  top: 0em;
+  left: 0em;
+  width: 1em;
+  height: 1em;
   background-color: #33f297;
-  border-radius: 0.75rem;
+  border-radius: 0.5em;
 }
 body .belowAvg::before {
   position: absolute;
   content: "";
-  top: -0.25rem;
-  left: -2rem;
-  width: 1.5rem;
-  height: 1.5rem;
+  top: 0em;
+  left: 0em;
+  width: 1em;
+  height: 1em;
   background-color: #f88a00;
-  border-radius: 0.75rem;
+  border-radius: 0.5em;
 }
 body span.highlight {
-  background-color: #fecf00;
+  background-color: #ffec98;
   color: #16181d;
   padding: 0.1em 0.2em;
 }
-body span.highlight.longest {
-  background-color: #33f297;
+body span.longest {
+  background-color: #fecf00;
 }
 body .sentence-details {
   display: grid;
   grid-template-columns: auto 1fr;
+  padding: 1em;
   row-gap: 1em;
   background-color: #e6dbf5;
 }
@@ -96,4 +95,41 @@ body .sentence-bank > div {
 }
 body span {
   pointer-events: none;
+}
+
+.key {
+  width: fit-content;
+  font-size: 0.8rem;
+}
+
+.key.aboveAvg {
+  position: relative;
+  padding-left: 1.5em;
+}
+
+.key.aboveAvg::before {
+  position: absolute;
+  content: "";
+  top: 0em;
+  left: 0em;
+  width: 1em;
+  height: 1em;
+  background-color: #33f297;
+  border-radius: 0.5em;
+}
+
+.key.belowAvg {
+  position: relative;
+  padding-left: 1.5em;
+}
+
+.key.belowAvg::before {
+  position: absolute;
+  content: "";
+  top: 0em;
+  left: 0em;
+  width: 1em;
+  height: 1em;
+  background-color: #f88a00;
+  border-radius: 0.5em;
 }

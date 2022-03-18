@@ -1,5 +1,5 @@
 $white: #f9f8fc;
-$mint: #fecf00;
+$yellow: #fecf00;
 $black: #16181d;
 $purple: #602fa2;
 $orange: #f88a00;
@@ -12,7 +12,7 @@ body {
   font-family: $font-stack;
   margin: 1rem auto;
   width: fit-content;
-  max-width: 1000px;
+  max-width: 1200px;
   display: grid;
   grid-template-columns: 50px 1fr 50px;
   row-gap: 1rem;
@@ -25,8 +25,8 @@ body {
     display: grid;
     row-gap: 1rem;
     grid-template-columns: auto;
-    input[type="text"] {
-      width: 40rem;
+    input[type='text'] {
+      width: 50rem;
       padding: 0.5em;
       font-size: 1.2rem;
       border: none;
@@ -38,14 +38,14 @@ body {
       outline: none;
     }
   }
-   button {
-      width: fit-content;
-      font: $font-stack;
-      color: $white;
-      background-color: $purple;
-      border: none;
-      padding: 0.5em 1em;
-    }
+  button {
+    width: fit-content;
+    font: $font-stack;
+    color: $white;
+    background-color: $purple;
+    border: none;
+    padding: 0.5em 1em;
+  }
   .hidden {
     visibility: hidden;
   }
@@ -53,69 +53,99 @@ body {
   .sentence {
     cursor: pointer;
   }
-  .sentence:hover {
-    color: #602fa2;
-  }
   .output-sentence {
-      position: relative;
-    }
+    position: relative;
+    padding-left: 1.5em;
+  }
 
-    .aboveAvg::before {
-      position: absolute;
-      content: '';
-      top: -0.25rem;
-      left: -2rem;
-      width: 1.5rem;
-      height: 1.5rem;
-      background-color: $green;
-      border-radius: 0.75rem;
-    }
-    .belowAvg::before {
-      position: absolute;
-      content: '';
-      top: -0.25rem;
-      left: -2rem;
-      width: 1.5rem;
-      height: 1.5rem;
-      background-color: $orange;
-      border-radius: 0.75rem;
-    }
+  .aboveAvg::before {
+    position: absolute;
+    content: '';
+    top: 0em;
+    left: 0em;
+    width: 1em;
+    height: 1em;
+    background-color: $green;
+    border-radius: 0.5em;
+  }
+  .belowAvg::before {
+    position: absolute;
+    content: '';
+    top: 0em;
+    left: 0em;
+    width: 1em;
+    height: 1em;
+    background-color: $orange;
+    border-radius: 0.5em;
+  }
 
-    span.highlight {
-      background-color: $mint;
-      color: $black;
-      padding: 0.1em 0.2em;
-    }
-    
-    span.highlight.longest {
-        background-color: $green;
-      }
+  span.highlight {
+    background-color: lighten($color: $yellow, $amount: 30%);
+    color: $black;
+    padding: 0.1em 0.2em;
+  }
 
-    .sentence-details {
+  span.longest {
+    background-color: $yellow;
+  }
+
+  .sentence-details {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    padding: 1em;
+    row-gap: 1em;
+    div {
+      grid-column: span 2;
+    }
+    background-color: lighten($color: $purple, $amount: 50%);
+  }
+
+  .sentence-bank {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 1em;
+
+    & > div {
       display: grid;
       grid-template-columns: auto 1fr;
-      row-gap: 1em;
-      div {
-        grid-column: span 2;
-      } 
-      background-color: lighten($color: $purple, $amount: 50%);
     }
-
-    .sentence-bank {
-      display: grid;
-      grid-template-columns: 1fr;
-      row-gap: 1em;
-
-      & > div {
-        display: grid;
-        grid-template-columns: auto 1fr;
-        
-      }
-    }
-    span {
-      pointer-events: none;
-    }
+  }
+  span {
+    pointer-events: none;
+  }
 }
 
+.key {
+  width: fit-content;
+  font-size: 0.8rem;
+}
 
+.key.aboveAvg {
+  position: relative;
+  padding-left: 1.5em;
+}
+.key.aboveAvg::before {
+  position: absolute;
+  content: '';
+  top: 0em;
+  left: 0em;
+  width: 1em;
+  height: 1em;
+  background-color: $green;
+  border-radius: 0.5em;
+}
 
+.key.belowAvg {
+  position: relative;
+  padding-left: 1.5em;
+}
+.key.belowAvg::before {
+  position: absolute;
+  content: '';
+  top: 0em;
+  left: 0em;
+  width: 1em;
+  height: 1em;
+  background-color: $orange;
+  border-radius: 0.5em;
+}
