@@ -30,7 +30,6 @@ export class Analyse {
         0,
       ) / this._sentences.length
     );
-    console.log(avg);
     return avg
   }
   analyse(sentence) {
