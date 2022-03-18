@@ -21,17 +21,23 @@ export class Analyse {
     return this._words.filter((word) => word.replace(/\W+/g, '').length > 4);
   }
   get average() {
-    return (
+    const avg = (
       this._sentences.reduce(
-        (sum, sentence) => sum + sentence.words.length,
+        (sum, sentence) => {
+          const avgWordLength  = sentence.words.reduce((sum, word) => sum + word.replace(/\W+/g, '').length,0) / sentence.words.length
+          return sum + avgWordLength
+        },
         0,
       ) / this._sentences.length
     );
+    console.log(avg);
+    return avg
   }
   analyse(sentence) {
     this._rawInput = sentence;
     if (sentence !== '' || sentence !== null) {
       this._words = sentence.trim().split(/\s+/);
+      const avgWordLength  = this._words.reduce((sum, word) => sum + word.replace(/\W+/g, '').length,0) / this._words.length
       return {
         words: this._words,
         longestWords: this.longestWords,
@@ -40,7 +46,7 @@ export class Analyse {
         avg:
           this._sentences.length == 0
             ? ''
-            : this._words.length >= this.average
+            : avgWordLength >= this.average
             ? 'aboveAvg'
             : 'belowAvg',
       };
