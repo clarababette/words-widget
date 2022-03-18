@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
       document.querySelector('#hideLength').value
     );
     for (let i = 0; i < words.length; i++) {
-      let word = words[i].innerHTML;
+      let word = words[i].innerHTML.replace(/\W+/g, '');
       if (hide.includes(word) && !words[i].classList.contains('hidden')) {
         words[i].classList.add('hidden');
       } else if (!hide.includes(word) && words[i].classList.contains('hidden')) {
@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
       document.querySelector('#hideLength').value
     );
     for (let i = 0; i < words.length; i++) {
-      let word = words[i].innerHTML;
+      let word = words[i].innerHTML.replace(/\W+/g, '');
       if (!dontHighlight.includes(word) && !words[i].classList.contains('highlight')) {
         words[i].classList.add('highlight');
       } else if (dontHighlight.includes(word) && words[i].classList.contains('highlight')) {
@@ -73,15 +73,21 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   newSentence.addEventListener('click', (event) => {
+    const minWords = document.querySelector('#minWordCount').value;
     const target = event.target;
     if (
       target.classList.contains('analyse-btn') &&
       inputSentence.value !== ''
     ) {
-      analyseSentence();
+      const sentence = inputSentence.value;
+      if (sentence.trim().split(/\s+/).length < minWords) {
+        inputSentence.value = '';
+        inputSentence.placeholder = `Your sentence must be at least ${minWords} words long.`
+      } else {
+        analyseSentence();
+      }
     }
     if (target.id == 'hide-words') {
-      console.log(target.checked)
       if (target.checked) {
         hideWords();
       } else {
@@ -102,6 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
         sentences.updateList();
         addToBank();
         newDetails.innerHTML = '';
+        inputSentence.placeholder = "Enter a sentence."
       }
     }
   });
@@ -114,8 +121,9 @@ document.addEventListener('DOMContentLoaded', () => {
       } else {
       document.querySelector(
         '.hideLength',
-      ).innerHTML = `Word limit: ${length} characters`;
-
+      ).innerHTML = `Target word length: ${length} characters`;
+      
+      document.querySelector('#targetKey').innerHTML = `Words longer than ${length -1} characters`
       document.querySelector(
         'label[for=hide-words]',
       ).innerHTML = `Hide all words fewer than ${length} characters long.`;
@@ -124,6 +132,9 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       highlightWords()
       }
+    }
+    if (event.target.id == 'minWordCount') {
+      document.querySelector('.minWordCount').innerHTML = `Minimum word count: ${event.target.value} words`
     }
   });
 

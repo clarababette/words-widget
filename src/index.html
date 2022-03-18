@@ -23,16 +23,28 @@
         autofocus
         placeholder="Enter a sentence."
       />
-
+      <div class="slidecontainer">
+        <div class="minWordCount">Minimum word count: 5</div>
+        <input
+          type="range"
+          min="0"
+          max="20"
+          value="5"
+          class="slider"
+          id="minWordCount"
+        />
+      </div>
       <button class="analyse-btn">Analyse</button>
-      <span class="key highlight">Words longer than word limit</span>
+      <span id="targetKey" class="key highlight"
+        >Words longer than 4 characters</span
+      >
       <span class="key highlight longest">Longest words</span>
       <span class="key aboveAvg"
-        >← Average length of words greater than the average of previous
-        sentences.</span
+        >← Average length of words greater than or equal to the average of
+        previous sentences.</span
       >
       <span class="key belowAvg"
-        >← Average length of words greater than the average of previous
+        >← Average length of words less than the average of previous
         sentences.</span
       >
       <div class="sentence-details"></div>
@@ -45,7 +57,7 @@
 
   <script id="sentence-details-template" type="text/x-handlebars-template">
     <div class="slidecontainer">
-         <div class="hideLength">Word limit: 5 characters</div>
+         <div class="hideLength">Target word length: 5 characters</div>
         <input
           type="range"
           min="0"
